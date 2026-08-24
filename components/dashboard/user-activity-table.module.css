@@ -1,0 +1,64 @@
+.section {
+  margin-top: 3rem;
+}
+
+.heading {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border: 1px solid #dfe3e8;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.tableWrapper:focus-visible {
+  outline: 0.1875rem solid #3451b2;
+  outline-offset: 0.1875rem;
+}
+
+.table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #dfe3e8;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.table th {
+  color: #526071;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.table .interactions {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table .emptyState {
+  padding-block: 2rem;
+  color: #526071;
+  text-align: center;
+}
+
+@media (max-width: 30rem) {
+  .table th,
+  .table td {
+    padding: 0.875rem;
+  }
+}

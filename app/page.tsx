@@ -1,4 +1,5 @@
 import { MetricsGrid } from "../components/dashboard/MetricsGrid";
+import { UserActivityTable } from "../components/dashboard/UserActivityTable";
 import { getPosts, getUsers } from "../lib/api/json-placeholder";
 import { calculateDashboardMetrics } from "../lib/metrics/calculate-dashboard-metrics";
 
@@ -14,6 +15,7 @@ export default async function HomePage() {
         <h1 className={styles.title}>Internal Operations Dashboard</h1>
       </header>
       <MetricsGrid metrics={metrics} />
+      <UserActivityTable activities={metrics.usersActivity} />
     </main>
   );
 }
