@@ -1,0 +1,25 @@
+.page {
+  width: min(100%, 80rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  max-width: 48rem;
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+@media (max-width: 30rem) {
+  .page {
+    padding-block: 2rem;
+  }
+}
+
