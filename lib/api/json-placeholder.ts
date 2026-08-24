@@ -6,7 +6,16 @@ async function fetchResource<T>(
   path: string,
   resourceName: string,
 ): Promise<T> {
-  const response = await fetch(`${JSON_PLACEHOLDER_BASE_URL}${path}`);
+  let response: Response;
+
+  try {
+    response = await fetch(`${JSON_PLACEHOLDER_BASE_URL}${path}`);
+  } catch (cause) {
+    throw new Error(
+      `Failed to fetch ${resourceName} from JSONPlaceholder`,
+      { cause },
+    );
+  }
 
   if (!response.ok) {
     const status = response.statusText

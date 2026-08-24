@@ -5,6 +5,8 @@ import { calculateDashboardMetrics } from "../lib/metrics/calculate-dashboard-me
 
 import styles from "./page.module.css";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [users, posts] = await Promise.all([getUsers(), getPosts()]);
   const metrics = calculateDashboardMetrics(users, posts);

@@ -102,9 +102,36 @@ test("getPosts throws a contextual error for an HTTP failure", async () => {
   );
 });
 
-test("network failures propagate instead of becoming empty data", async () => {
+test("getUsers preserves a network failure as the error cause", async () => {
   const networkError = new Error("Network unavailable");
-  installFetchMock(networkError);
+  const requestedUrls = installFetchMock(networkError);
 
-  await assert.rejects(getUsers, networkError);
+  await assert.rejects(getUsers, (error: unknown) => {
+    assert.ok(error instanceof Error);
+    assert.equal(error.message, "Failed to fetch users from JSONPlaceholder");
+    assert.equal(error.cause, networkError);
+
+    return true;
+  });
+  assert.deepEqual(
+    requestedUrls.map((url) => new URL(url).pathname),
+    ["/users"],
+  );
+});
+
+test("getPosts preserves a network failure as the error cause", async () => {
+  const networkError = new Error("Network unavailable");
+  const requestedUrls = installFetchMock(networkError);
+
+  await assert.rejects(getPosts, (error: unknown) => {
+    assert.ok(error instanceof Error);
+    assert.equal(error.message, "Failed to fetch posts from JSONPlaceholder");
+    assert.equal(error.cause, networkError);
+
+    return true;
+  });
+  assert.deepEqual(
+    requestedUrls.map((url) => new URL(url).pathname),
+    ["/posts"],
+  );
 });
