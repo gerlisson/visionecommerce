@@ -1,3 +1,4 @@
+import { BusinessContext } from "../components/dashboard/BusinessContext";
 import { MetricsGrid } from "../components/dashboard/MetricsGrid";
 import { UserActivityTable } from "../components/dashboard/UserActivityTable";
 import { getPosts, getUsers } from "../lib/api/json-placeholder";
@@ -16,6 +17,7 @@ export default async function HomePage() {
       <header className={styles.header}>
         <h1 className={styles.title}>Internal Operations Dashboard</h1>
       </header>
+      <BusinessContext />
       <MetricsGrid metrics={metrics} />
       <UserActivityTable activities={metrics.usersActivity} />
     </main>
